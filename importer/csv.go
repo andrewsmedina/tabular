@@ -1,17 +1,18 @@
 package importer
 
 import (
-	"encoding/csv"
-	"io"
-
-	"github.com/andrewsmedina/tabular"
+	"io/ioutil"
+	"fmt"
+	".."
+	"strings"
+	"csv"
 )
 
 // CSV represents a csv importer
 type CSV struct{}
 
 // Import imports a csv into a tabular.Table
-func (c *CSV) Import(reader io.Reader) (*tabular.Table, error) {
+func (c *CSV) Import(config map[string]string) (*tabular.Table, error) {
 	r := csv.NewReader(reader)
 
 	records, err := r.ReadAll()

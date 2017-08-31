@@ -1,18 +1,16 @@
 package importer
 
 import (
-	"strings"
 	"testing"
 )
 
-func TestCSVImporter(t *testing.T) {
-	data := `first_name,last_name,username
-Andrews,Medina,andrewsmedina`
-	csvImpoter := &CSV{}
-
-	_, err := csvImpoter.Import(strings.NewReader(data))
-
+func TestCSVImport(t *testing.T) {
+	c := CSV{}
+	table, err := c.Import(map[string]string{"path": "testdata/test.csv"})
 	if err != nil {
-		t.Fatalf("expect nil, got %q", err)
+		t.Fatalf("Error importing csv. Got %s", err.Error())
+	}
+	if len(table.Fields) != 3 {
+		t.Fatalf("Error importing csv. Want %d fields, got %d", 3, len(table.Fields))
 	}
 }

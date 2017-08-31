@@ -6,7 +6,7 @@ import (
 
 type FakeImporter struct{}
 
-func (f *FakeImporter) Import() {}
+func (f *FakeImporter) Import(config map[string]string) {}
 func TestImporter(t *testing.T) {
 	fake := &FakeImporter{}
 	Register("fake", fake)

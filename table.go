@@ -16,15 +16,15 @@ type Field struct {
 
 // Table represents a table
 type Table struct {
-	fields []Field
-	data   []interface{}
+	Fields []Field
+	Data   []interface{}
 }
 
 // Append adds a row to a table data
 func (t *Table) Append(row interface{}) {
-	if t.data == nil {
-		t.data = []interface{}{}
+	if t.Data == nil {
+		t.Data = []interface{}{}
 	}
 
-	t.data = append(t.data, row)
+	t.Data = append(t.Data, row)
 }

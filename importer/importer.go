@@ -8,7 +8,7 @@ func init() {
 
 // ImportBackend represets a data importer
 type ImportBackend interface {
-	Import()
+	Import(config map[string]string)
 }
 
 // Register registers a new import backend
