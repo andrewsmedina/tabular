@@ -1,11 +1,16 @@
 package importer
 
 import (
-	"io/ioutil"
-	".."
-	"encoding/csv"
 	"bytes"
+	"encoding/csv"
+	"io/ioutil"
+
+	"github.com/andrewsmedina/tabular"
 )
+
+func init() {
+	Register("csv", &CSV{})
+}
 
 // CSV represents a csv importer
 type CSV struct{}

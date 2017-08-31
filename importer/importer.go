@@ -1,18 +1,21 @@
 package importer
 
-var importBackends map[string]ImportBackend
+import (
+	"github.com/andrewsmedina/tabular"
+)
 
-func init() {
-	importBackends = map[string]ImportBackend{}
-}
+var importBackends map[string]ImportBackend
 
 // ImportBackend represets a data importer
 type ImportBackend interface {
-	Import(config map[string]string)
+	Import(config map[string]string) (*tabular.Table, error)
 }
 
 // Register registers a new import backend
 func Register(name string, backend ImportBackend) {
+	if importBackends == nil {
+		importBackends = map[string]ImportBackend{}
+	}
 	importBackends[name] = backend
 }
 

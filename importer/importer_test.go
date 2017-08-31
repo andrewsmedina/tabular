@@ -2,11 +2,16 @@ package importer
 
 import (
 	"testing"
+
+	"github.com/andrewsmedina/tabular"
 )
 
 type FakeImporter struct{}
 
-func (f *FakeImporter) Import(config map[string]string) {}
+func (f *FakeImporter) Import(config map[string]string) (*tabular.Table, error) {
+	return &tabular.Table{}, nil
+}
+
 func TestImporter(t *testing.T) {
 	fake := &FakeImporter{}
 	Register("fake", fake)
